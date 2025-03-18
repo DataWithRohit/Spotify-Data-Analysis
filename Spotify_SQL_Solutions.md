@@ -136,4 +136,6 @@ WHERE liveness > 0 AND (energy / liveness) > 1.2;
 ### 5. Calculate the cumulative sum of likes for tracks ordered by the number of views using window functions.
 **Solution:**
 ```sql
-SELECT trac
+SELECT track, views ,
+sum(likes) over(partition by track order by views desc ) as Total_Likes
+from spotify;
